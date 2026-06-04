@@ -1,0 +1,31 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        if (digits[digits.length - 1] < 9) {
+            digits[digits.length - 1] += 1;
+            return digits;
+        }
+        boolean gotAllNine = true;
+        int i = digits.length - 1;
+        while (i >= 0) {
+            if (digits[i] != 9) {
+                gotAllNine = false;
+                digits[i] = digits[i] + 1;
+                i--;
+                break;
+            } else {
+                digits[i] = 0;
+            }
+            i--;
+        }
+        if (gotAllNine) {
+            int[] a = new int[digits.length + 1];
+            a[0] = 1;
+            for (int j = 1; j < a.length; j++) {
+                a[j] = 0;
+            }
+            return a;
+        }
+        return digits;
+
+    }
+}
